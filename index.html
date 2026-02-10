@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Amo en Todos los Idiomas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 20%, #6c5b7b 40%, #355c7d 60%, #2a4d69 80%, #4b86b4 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Estrellas brillantes de fondo */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Círculo central decorativo */
+        .center-circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 60px rgba(255, 255, 255, 0.4),
+                        inset 0 0 60px rgba(255, 255, 255, 0.2);
+            animation: circleGlow 4s ease-in-out infinite;
+            z-index: 5;
+        }
+
+        @keyframes circleGlow {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 60px rgba(255, 255, 255, 0.4),
+                           inset 0 0 60px rgba(255, 255, 255, 0.2);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 0 80px rgba(255, 255, 255, 0.6),
+                           inset 0 0 80px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        .center-text {
+            position: absolute;
+            font-size: 5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(45deg, #fff, #ffcccb, #fff, #ffd1dc);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            z-index: 10;
+            animation: textShimmer 3s ease-in-out infinite, pulse 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+        }
+
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        /* Círculos orbitales para organizar las traducciones */
+        .orbit {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: rotate 60s linear infinite;
+        }
+
+        .orbit-1 { width: 500px; height: 500px; }
+        .orbit-2 { width: 700px; height: 700px; animation-duration: 80s; animation-direction: reverse; }
+        .orbit-3 { width: 900px; height: 900px; animation-duration: 100s; }
+        .orbit-4 { width: 1100px; height: 1100px; animation-duration: 120s; animation-direction: reverse; }
+        .orbit-5 { width: 1300px; height: 1300px; animation-duration: 140s; }
+        .orbit-6 { width: 1500px; height: 1500px; animation-duration: 160s; animation-direction: reverse; }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .floating-text {
+            position: absolute;
+            font-size: 1.1rem;
+            font-weight: 600;
+            white-space: nowrap;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .floating-text:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+            z-index: 100;
+        }
+
+        /* Colores vibrantes y románticos para cada texto */
+        .color-1 { color: #ff6b9d; }
+        .color-2 { color: #ffd93d; }
+        .color-3 { color: #6bcf7f; }
+        .color-4 { color: #4d9de0; }
+        .color-5 { color: #bb86fc; }
+        .color-6 { color: #ff8fab; }
+        .color-7 { color: #ffbe0b; }
+        .color-8 { color: #06ffa5; }
+        .color-9 { color: #5d9cec; }
+        .color-10 { color: #f8a5c2; }
+
+        /* Partículas flotantes */
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            animation: particleFloat 15s infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { 
+                transform: translate(0, 100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translate(100px, -100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .center-text {
+                font-size: 3rem;
+            }
+            
+            .floating-text {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+
+            .orbit-1 { width: 300px; height: 300px; }
+            .orbit-2 { width: 450px; height: 450px; }
+            .orbit-3 { width: 600px; height: 600px; }
+            .orbit-4 { width: 750px; height: 750px; }
+
+            .center-circle {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <div class="center-circle"></div>
+        <div class="center-text">Te amo</div>
+        
+        <!-- Órbita 1 -->
+        <div class="orbit orbit-1"></div>
+        
+        <!-- Órbita 2 -->
+        <div class="orbit orbit-2"></div>
+        
+        <!-- Órbita 3 -->
+        <div class="orbit orbit-3"></div>
+        
+        <!-- Órbita 4 -->
+        <div class="orbit orbit-4"></div>
+
+        <!-- Órbita 5 -->
+        <div class="orbit orbit-5"></div>
+
+        <!-- Órbita 6 -->
+        <div class="orbit orbit-6"></div>
+    </div>
+
+    <script>
+        // Crear estrellas brillantes
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Traducciones organizadas por órbitas - versión expandida con muchos más idiomas
+        const translations = {
+            orbit1: [
+                { text: "I love you", lang: "English" },
+                { text: "Je t'aime", lang: "Français" },
+                { text: "Ich liebe dich", lang: "Deutsch" },
+                { text: "Ti amo", lang: "Italiano" },
+                { text: "Eu te amo", lang: "Português" },
+                { text: "我爱你", lang: "中文" },
+                { text: "愛してる", lang: "日本語" },
+                { text: "사랑해", lang: "한국어" },
+                { text: "Я тебя люблю", lang: "Русский" },
+                { text: "أحبك", lang: "العربية" }
+            ],
+            orbit2: [
+                { text: "Σ' αγαπώ", lang: "Ελληνικά" },
+                { text: "Kocham cię", lang: "Polski" },
+                { text: "Seni seviyorum", lang: "Türkçe" },
+                { text: "אני אוהב אותך", lang: "עברית" },
+                { text: "Ik hou van jou", lang: "Nederlands" },
+                { text: "Jag älskar dig", lang: "Svenska" },
+                { text: "मैं तुमसे प्यार करता हूँ", lang: "हिन्दी" },
+                { text: "Я кохаю тебе", lang: "Українська" },
+                { text: "Miluji tě", lang: "Čeština" },
+                { text: "Szeretlek", lang: "Magyar" },
+                { text: "Tôi yêu bạn", lang: "Tiếng Việt" },
+                { text: "Mahal kita", lang: "Filipino" }
+            ],
+            orbit3: [
+                { text: "ฉันรักคุณ", lang: "ไทย" },
+                { text: "Te iubesc", lang: "Română" },
+                { text: "Volim te", lang: "Hrvatski" },
+                { text: "Rakastan sinua", lang: "Suomi" },
+                { text: "Jeg elsker deg", lang: "Norsk" },
+                { text: "Elsker dig", lang: "Dansk" },
+                { text: "Обичам те", lang: "Български" },
+                { text: "Tave myliu", lang: "Lietuvių" },
+                { text: "Es tevi mīlu", lang: "Latviešu" },
+                { text: "Ég elska þig", lang: "Íslenska" },
+                { text: "Ljubim te", lang: "Srpski" },
+                { text: "Ek het jou lief", lang: "Afrikaans" },
+                { text: "Saya cinta kamu", lang: "Indonesia" },
+                { text: "Nakupenda", lang: "Swahili" }
+            ],
+            orbit4: [
+                { text: "Aloha au iā 'oe", lang: "Hawaiian" },
+                { text: "நான் உன்னை காதலிக்கிறேன்", lang: "தமிழ்" },
+                { text: "ನಾನು ನಿನ್ನನ್ನು ಪ್ರೀತಿಸುತ್ತೇನೆ", lang: "ಕನ್ನಡ" },
+                { text: "എനിക്ക് നിന്നെ ഇഷ്ടമാണ്", lang: "മലയാളം" },
+                { text: "আমি তোমায় ভালোবাসি", lang: "বাংলা" },
+                { text: "ਮੈਂ ਤੁਹਾਨੂੰ ਪਿਆਰ ਕਰਦਾ ਹਾਂ", lang: "ਪੰਜਾਬੀ" },
+                { text: "میں تم سے محبت کرتا ہوں", lang: "اردو" },
+                { text: "من عاشقتم", lang: "فارسی" },
+                { text: "Seni sevirəm", lang: "Azərbaycan" },
+                { text: "Мен сені жақсы көремін", lang: "Қазақ" },
+                { text: "Мен сени сүйөм", lang: "Кыргыз" },
+                { text: "Men seni sevaman", lang: "O'zbek" },
+                { text: "ես քեզ սիրում եմ", lang: "Հայերեն" },
+                { text: "მე შენ მიყვარხარ", lang: "ქართული" }
+            ],
+            orbit5: [
+                { text: "Maite zaitut", lang: "Euskara" },
+                { text: "T'estimo", lang: "Català" },
+                { text: "Quérote", lang: "Galego" },
+                { text: "Ndinokuda", lang: "Shona" },
+                { text: "Ndiyakuthanda", lang: "Xhosa" },
+                { text: "Ngiakuthanda", lang: "Zulu" },
+                { text: "Ke a go rata", lang: "Tswana" },
+                { text: "Ek is lief vir jou", lang: "Afrikaans" },
+                { text: "Ngiyakuthanda", lang: "Ndebele" },
+                { text: "Nna ke go rata", lang: "Sotho" },
+                { text: "Ndza ku rhandza", lang: "Tsonga" },
+                { text: "Ndi a ku funa", lang: "Venda" }
+            ],
+            orbit6: [
+                { text: "Sarang heyo", lang: "Korean (formal)" },
+                { text: "Bahibak", lang: "Arabic (Egyptian)" },
+                { text: "Ana behibak", lang: "Arabic (Levantine)" },
+                { text: "Aishiteru", lang: "Japanese (romantic)" },
+                { text: "Wo ai ni", lang: "Mandarin (pinyin)" },
+                { text: "Ngo oi nei", lang: "Cantonese" },
+                { text: "Gua ai li", lang: "Taiwanese Hokkien" },
+                { text: "Aku cinta kamu", lang: "Malay" },
+                { text: "Aku tresna kowe", lang: "Javanese" },
+                { text: "Icih nganuhun", lang: "Sundanese" },
+                { text: "Kale cinta kam", lang: "Minangkabau" },
+                { text: "Ngiring asih", lang: "Balinese" }
+            ]
+        };
+
+        const colors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 
+                       'color-6', 'color-7', 'color-8', 'color-9', 'color-10'];
+        
+        const container = document.querySelector('.container');
+
+        // Función para posicionar textos en círculo de forma fija
+        function positionOnOrbit(orbitRadius, items) {
+            const angleStep = (2 * Math.PI) / items.length;
+            
+            items.forEach((item, index) => {
+                const angle = angleStep * index;
+                const x = Math.cos(angle) * orbitRadius;
+                const y = Math.sin(angle) * orbitRadius;
+                
+                const textElement = document.createElement('div');
+                textElement.className = `floating-text ${colors[index % colors.length]}`;
+                textElement.textContent = item.text;
+                textElement.style.left = `calc(50% + ${x}px)`;
+                textElement.style.top = `calc(50% + ${y}px)`;
+                
+                // Tooltip con el idioma
+                textElement.title = item.lang;
+                
+                container.appendChild(textElement);
+            });
+        }
+
+        // Posicionar todas las traducciones de forma fija
+        positionOnOrbit(250, translations.orbit1);
+        positionOnOrbit(350, translations.orbit2);
+        positionOnOrbit(450, translations.orbit3);
+        positionOnOrbit(550, translations.orbit4);
+        positionOnOrbit(650, translations.orbit5);
+        positionOnOrbit(750, translations.orbit6);
+
+        // Crear partículas románticas (corazones, estrellas, etc.) - versión reducida
+        const particles = ['❤️', '💕', '✨', '⭐'];
+        
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = particles[Math.floor(Math.random() * particles.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.fontSize = (Math.random() * 15 + 12) + 'px';
+            particle.style.animationDuration = (Math.random() * 12 + 12) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 24000);
+        }
+
+        // Crear partículas menos frecuentemente
+        setInterval(createParticle, 2000);
+        
+        // Crear algunas partículas iniciales
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createParticle, i * 400);
+        }
+    </script>
+</body>
+</html>
